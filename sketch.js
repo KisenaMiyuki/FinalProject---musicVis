@@ -25,6 +25,7 @@ function setup() {
   vis.add(new WavePattern());
   vis.add(new Needles());
   vis.add(new RidgePlot());
+  vis.add(new BlocksAndLine());
 }
 
 function draw() {
