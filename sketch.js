@@ -6,8 +6,6 @@ var vis = null;
 var sound = null;
 //variable for p5 fast fourier transform
 var fourier;
-// GUI
-var globalGUI;
 
 function preload() {
   sound = loadSound("assets/stomper_reggae_bit.mp3");
