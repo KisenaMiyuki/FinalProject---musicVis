@@ -10,8 +10,8 @@ class RidgePlot {
   plotStartY = height - this.plotEndY;
 
   waveGraph = [];
-  newLineIntervalFrame = 20;
-  graphSpeedPPF = 1; // Pixel per frame
+  newLineIntervalFrame = 10;
+  graphSpeedPPF = 3; // Pixel per frame
 
   draw() {
     push();
@@ -20,7 +20,7 @@ class RidgePlot {
     stroke(0, 125, 200);
     strokeWeight(2);
     noFill();
-    //     - add a new line to the array every <30> frames
+    //     - add a new line to the waveGraph every <30> frames
     if (frameCount % this.newLineIntervalFrame == 0) {
       this.addWave();
     }
@@ -28,16 +28,35 @@ class RidgePlot {
     for (let i = 0; i < this.waveGraph.length; i++) {
       // for every wave in graph
       const currentWave = this.waveGraph[i];
+
+      // determine its up-moving speed
+      // using first vertex y-coordinate as reference
+      // (plotStartY <- vertex y -> plotStartY-50px) === (1 <-> graphSpeedPPF)
+      let calculatedSpeed = map(
+        currentWave[0].y,
+        this.plotStartY,
+        this.plotStartY - 50,
+        0.5,
+        this.graphSpeedPPF
+      );
+      let constrainedSpeed = constrain(
+        calculatedSpeed,
+        0.5,
+        this.graphSpeedPPF
+      );
+
+      // Make a line drawing
       beginShape();
       for (let j = 0; j < currentWave.length; j++) {
         // for every vertex in that wave
         const currentVertex = currentWave[j];
         // move it up
-        currentVertex.y -= this.graphSpeedPPF;
+        currentVertex.y -= constrainedSpeed;
         // draw a vertex for the polygon
         vertex(currentVertex.x, currentVertex.y);
       }
       endShape();
+
       //     - if line's y-coord less than <y>, remove line fron array
       if (currentWave[0].y <= this.plotEndY) {
         this.waveGraph.splice(i, 1);
