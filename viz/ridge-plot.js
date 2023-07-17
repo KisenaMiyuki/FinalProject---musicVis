@@ -29,6 +29,7 @@ class RidgePlot {
       // for every wave in graph
       const currentWave = this.waveGraph[i];
 
+      // =============== Original improvement code ===============
       // determine its up-moving speed
       // using first vertex y-coordinate as reference
       // (plotStartY <- vertex y -> plotStartY-50px) === (1 <-> graphSpeedPPF)
@@ -44,6 +45,7 @@ class RidgePlot {
         0.5,
         this.graphSpeedPPF
       );
+      // =============== End of original improvement code ===============
 
       // Make a line drawing
       beginShape();
