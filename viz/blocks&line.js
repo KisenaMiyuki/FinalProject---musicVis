@@ -48,8 +48,10 @@ class BlocksAndLine {
     fill(255, 0, 0);
 
     let incr = width / (10 - 1);
-    for (let i = 0; i < 10; i++) {
-      rect(i * incr - width / 2, 0, blockSize, blockSize);
+    for (let widthCounter = 0; widthCounter < 11; widthCounter++) {
+      for(let heightCounter = 0; heightCounter < 11; heightCounter++) {
+        rect(widthCounter * incr - width / 2, heightCounter * incr - height, blockSize, blockSize);
+      }
     }
     pop();
   }
