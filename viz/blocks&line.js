@@ -34,7 +34,7 @@ class BlocksAndLine {
   rotatingBlocks(energy) {
     // Control rotation of all blocks based on energy threshold
     if (energy < this.rotationThreshold) {
-      this.rot += 0.01;
+      this.rot += 0.002;
     }
 
     // Make block size react to energy
