@@ -45,7 +45,7 @@ class BlocksAndLine {
     rectMode(CENTER);
     translate(width / 2, height / 2);
     rotate(this.rot);
-    fill(255, 0, 0);
+    fill(255, 125, 0);
 
     let incr = width / (10 - 1);
     for (let widthCounter = 0; widthCounter < 11; widthCounter++) {
