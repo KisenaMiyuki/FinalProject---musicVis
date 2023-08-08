@@ -34,7 +34,7 @@ class BlocksAndLine {
   rotatingBlocks(energy) {
     // Control rotation of all blocks based on energy threshold
     if (energy < this.rotationThreshold) {
-      this.rot += 0.01;
+      this.rot += 0.002;
     }
 
     // Make block size react to energy
@@ -45,11 +45,13 @@ class BlocksAndLine {
     rectMode(CENTER);
     translate(width / 2, height / 2);
     rotate(this.rot);
-    fill(255, 0, 0);
+    fill(255, 125, 0);
 
     let incr = width / (10 - 1);
-    for (let i = 0; i < 10; i++) {
-      rect(i * incr - width / 2, 0, blockSize, blockSize);
+    for (let widthCounter = 0; widthCounter < 11; widthCounter++) {
+      for(let heightCounter = 0; heightCounter < 11; heightCounter++) {
+        rect(widthCounter * incr - width / 2, heightCounter * incr - height, blockSize, blockSize);
+      }
     }
     pop();
   }
