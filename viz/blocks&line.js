@@ -6,7 +6,7 @@ class BlocksAndLine {
   noiseScale = 0.01;
   noisePan = 0;
 
-  rotationThreshold = 200;
+  rotationThreshold = 150;
   rot = 0;
 
   draw() {
@@ -33,7 +33,7 @@ class BlocksAndLine {
 
   rotatingBlocks(energy) {
     // Control rotation of all blocks based on energy threshold
-    if (energy < this.rotationThreshold) {
+    if (energy > this.rotationThreshold) {
       this.rot += 0.002;
     }
 
@@ -45,7 +45,7 @@ class BlocksAndLine {
     rectMode(CENTER);
     translate(width / 2, height / 2);
     rotate(this.rot);
-    fill(255, 125, 0);
+    fill("#48CAE4");
 
     let incr = width / (10 - 1);
     for (let widthCounter = 0; widthCounter < 11; widthCounter++) {
