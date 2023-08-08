@@ -8,7 +8,7 @@ var sound = null;
 var fourier;
 
 function preload() {
-  sound = loadSound("assets/let_me_down.mp3");
+  sound = loadSound("assets/supersonic.mp3");
   sound.setVolume(0.2);
 }
 
@@ -27,6 +27,7 @@ function setup() {
   vis.add(new Needles());
   vis.add(new RidgePlot());
   vis.add(new BlocksAndLine());
+  vis.add(new Fireworks());
 }
 
 function draw() {
